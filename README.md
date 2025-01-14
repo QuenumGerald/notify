@@ -4,7 +4,7 @@
 We're offering a bounty for the development of new "Ignite Apps" that extend the functionality of the Ignite CLI command palette. These apps should enhance the blockchain development process, providing developers with new tools and capabilities.
 
 ## Bounty Reward
-- **Amount**: 2000 USD
+- **Amount**: Up to 2000 USD
 - **Eligibility**: The first three submitted Ignite Apps that meet all criteria
 
 ## What is an Ignite App?
