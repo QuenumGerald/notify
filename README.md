@@ -1,5 +1,7 @@
 # Bounty: Create an Ignite App - Extend Ignite CLI Functionality
 
+![Ignite App Challenge](Repo.png "Ignite App Challenge")
+
 ## Overview
 We're offering a bounty for the development of new "Ignite Apps" that extend the functionality of the Ignite CLI command palette. These apps should enhance the blockchain development process, providing developers with new tools and capabilities.
 
@@ -36,9 +38,8 @@ If you want to work on your own idea, please contact and discuss with the team t
 2. Implement your chosen Ignite App
 3. Ensure your app meets all bounty criteria
 4. Submit a pull request with your implementation
-5. Include documentation on how to use your Ignite App
-  - 5a. This would be done by creating a step-by-step guide on how to use the App.
-7. Your App must have an Open-Source License
+5. Include documentation on how to use your Ignite App - This would be done by creating a step-by-step guide on how to use the App.
+6. Your App must have an Open-Source License
 
 ## Evaluation Process
 Submissions will be reviewed on a first-come, first-served basis. The first three submissions that meet all criteria will be awarded the bounty.
