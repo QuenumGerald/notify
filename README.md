@@ -22,11 +22,14 @@ To be eligible for the bounty, your Ignite App must:
 1. Be fully functional and working
 2. Fulfill the description provided in the chosen App suggestion
 3. Include tests that confirm the expected functionality
+4. The same idea has not been submitted before
 
 ## App Suggestions
 Choose one of the following 10 app suggestions to implement:
 
 https://hackmd.io/@tendermint-devx/Sk_64jc8Jx
+
+If you want to work on your own idea, please contact and discuss with the team that it is eligible for submission.
 
 ## Submission Guidelines
 1. Fork this repository
