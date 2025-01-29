@@ -37,7 +37,7 @@ If you want to work on your own idea, please contact and discuss with the team t
 3. Ensure your app meets all bounty criteria
 4. Submit a pull request with your implementation
 5. Include documentation on how to use your Ignite App
-   5a. This would be done by creating a step-by-step guide on how to use the App.
+  - 5a. This would be done by creating a step-by-step guide on how to use the App.
 7. Your App must have an Open-Source License
 
 ## Evaluation Process
