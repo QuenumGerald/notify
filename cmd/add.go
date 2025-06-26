@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 	"github.com/ignite/cli/v29/ignite/services/plugin"
-	inotify "ignite-notify/internal"
+	"ignite-notify/internal/config"
 )
 
 // Add handles the 'notify add' command
-// Uses inotify.Subscription and helpers from internal/config.go
+// Uses config.Subscription and helpers from internal/config.go
 func Add(ctx context.Context, c *plugin.ExecutedCommand) error {
 	name, node, query, sink, webhook := "", "", "", "", ""
 	for _, f := range c.Flags {
@@ -37,7 +37,7 @@ func Add(ctx context.Context, c *plugin.ExecutedCommand) error {
 		return fmt.Errorf("name and query are required")
 	}
 
-	sub := inotify.Subscription{
+	sub := config.Subscription{
 		Name:    name,
 		Node:    node,
 		Query:   query,
@@ -45,12 +45,12 @@ func Add(ctx context.Context, c *plugin.ExecutedCommand) error {
 		Webhook: webhook,
 	}
 
-	file, err := inotify.GetConfigPath()
+	file, err := config.GetConfigPath()
 	if err != nil {
 		return err
 	}
 
-	subs, err := inotify.LoadSubscriptions(file)
+	subs, err := config.LoadSubscriptions(file)
 	if err != nil {
 		return err
 	}
@@ -63,7 +63,7 @@ func Add(ctx context.Context, c *plugin.ExecutedCommand) error {
 	}
 
 	subs = append(subs, sub)
-	if err := inotify.SaveSubscriptions(file, subs); err != nil {
+	if err := config.SaveSubscriptions(file, subs); err != nil {
 		return err
 	}
 

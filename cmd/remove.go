@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 	"github.com/ignite/cli/v29/ignite/services/plugin"
-	inotify "ignite-notify/internal"
+	"ignite-notify/internal/config"
 )
 
 // Remove handles the 'notify rm' command
-// Uses inotify.Subscription and helpers from internal/config.go
+// Uses config.Subscription and helpers from internal/config.go
 func Remove(ctx context.Context, c *plugin.ExecutedCommand) error {
 	name := ""
 	for _, f := range c.Flags {
@@ -23,16 +23,16 @@ func Remove(ctx context.Context, c *plugin.ExecutedCommand) error {
 		return fmt.Errorf("subscription name is required (use --name or as argument)")
 	}
 
-	file, err := inotify.GetConfigPath()
+	file, err := config.GetConfigPath()
 	if err != nil {
 		return err
 	}
-	subs, err := inotify.LoadSubscriptions(file)
+	subs, err := config.LoadSubscriptions(file)
 	if err != nil {
 		return err
 	}
 	found := false
-	newSubs := make([]inotify.Subscription, 0, len(subs))
+	newSubs := make([]config.Subscription, 0, len(subs))
 	for _, s := range subs {
 		if s.Name == name {
 			found = true
@@ -44,7 +44,7 @@ func Remove(ctx context.Context, c *plugin.ExecutedCommand) error {
 		fmt.Printf("No subscription named '%s' found.\n", name)
 		return nil
 	}
-	if err := inotify.SaveSubscriptions(file, newSubs); err != nil {
+	if err := config.SaveSubscriptions(file, newSubs); err != nil {
 		return err
 	}
 	fmt.Printf("Subscription '%s' removed.\n", name)

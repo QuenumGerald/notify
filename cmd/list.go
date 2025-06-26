@@ -4,17 +4,17 @@ import (
 	"context"
 	"fmt"
 	"github.com/ignite/cli/v29/ignite/services/plugin"
-	inotify "ignite-notify/internal"
+	"ignite-notify/internal/config"
 )
 
 // List handles the 'notify ls' command
-// Uses inotify.Subscription and helpers from internal/config.go
+// Uses config.Subscription and helpers from internal/config.go
 func List(ctx context.Context, c *plugin.ExecutedCommand) error {
-	file, err := inotify.GetConfigPath()
+	file, err := config.GetConfigPath()
 	if err != nil {
 		return err
 	}
-	subs, err := inotify.LoadSubscriptions(file)
+	subs, err := config.LoadSubscriptions(file)
 	if err != nil {
 		return err
 	}
