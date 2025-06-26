@@ -1,0 +1,6 @@
+version: 1
+apps:
+  ignite-notify:
+    description: ignite-notify is an awesome Ignite application!
+    path: ./
+    
