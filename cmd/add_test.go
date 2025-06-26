@@ -9,11 +9,11 @@ import (
 func TestAdd_Minimal(t *testing.T) {
 	ctx := context.Background()
 	c := &plugin.ExecutedCommand{
-		Flags: []*plugin.FlagValue{
-			{Name: "name", Value: "testadd"},
-			{Name: "query", Value: "tm.event='NewBlock'"},
-			{Name: "node", Value: "ws://localhost:26657"},
-			{Name: "sink", Value: "stdout"},
+		Flags: []*plugin.Flag{
+			{Name: "name", Type: 1, Value: "testadd"},
+			{Name: "query", Type: 1, Value: "tm.event='NewBlock'"},
+			{Name: "node", Type: 1, Value: "ws://localhost:26657"},
+			{Name: "sink", Type: 1, Value: "stdout"},
 		},
 	}
 	err := Add(ctx, c)

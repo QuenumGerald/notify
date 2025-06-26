@@ -9,7 +9,7 @@ import (
 func TestRemove_Minimal(t *testing.T) {
 	ctx := context.Background()
 	c := &plugin.ExecutedCommand{
-		Flags: []*plugin.FlagValue{{Name: "name", Value: "testadd"}},
+		Args: []string{"testadd"},
 	}
 	err := Remove(ctx, c)
 	if err != nil {

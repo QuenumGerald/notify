@@ -26,6 +26,7 @@ func TestRunner_Start_OneStdout(t *testing.T) {
 	}
 	r := Runner{Subs: []config.Subscription{sub}}
 	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 	go func() {
 		// Stop after a short delay
 		<-ctx.Done()
