@@ -35,10 +35,6 @@ func (notifyApp) Manifest(_ context.Context) (*plugin.Manifest, error) {
 			{Use: "ls",  Short: "List subscriptions"},
 			{Use: "rm [name]", Short: "Remove a subscription"},
 		},
-
-		Hooks: []*plugin.Hook{
-			{}, // Hook presence only; match command in ExecuteHookPost
-		},
 	}, nil
 }
 
