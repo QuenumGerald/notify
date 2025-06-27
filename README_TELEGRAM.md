@@ -68,8 +68,35 @@ Your `~/.ignite/notify.yaml` will have an entry like:
 ```yaml
 - name: mytelegram
   node: ws://localhost:26657
-  query: tm.event='NewBlock'
+  query: "tm.event EXISTS"
   sink: telegram
   webhook: https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstUvwxYZ/sendMessage?chat_id=123456789
 ```
 
+---
+
+## Telegram Notification Formatting
+
+All fields from the `result` section are sent in the Telegram notification as a flat `key: value` list (including nested fields).
+
+- The prefixes `data.` and `data.value.` are automatically removed for clarity:
+    - `data.value.height` becomes `height`
+    - `data.value.step` becomes `step`
+    - `data.type` becomes `type`
+    - etc.
+- Every field present in the event will be included automatically, even new fields added in the future.
+
+Example output in Telegram:
+
+```
+height: 3776
+step: RoundStepCommit
+type: tendermint/event/RoundState
+events.tm.event.0: NewRoundStep
+query: tm.event EXISTS
+```
+
+---
+
+## License
+MIT
