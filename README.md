@@ -40,11 +40,11 @@ go build -o ignite-notify
 
 ### Add a subscription
 ```
-ignite add --name mysub --node ws://localhost:26657 --query "tm.event='NewBlock'" --sink slack --webhook https://hooks.slack.com/services/XXX
+ignite add --name mysub --node ws://localhost:26657 --query "tm.event EXISTS" --sink slack --webhook https://hooks.slack.com/services/XXX
 ```
 Example (Telegram):
 ```
-ignite add --name mytelegram --node ws://localhost:26657 --query "tm.event='NewBlock'" --sink telegram --webhook "https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>"
+ignite add --name mytelegram --node ws://localhost:26657 --query "tm.event EXISTS" --sink telegram --webhook "https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>"
 """
 
 ### List subscriptions
@@ -70,7 +70,7 @@ Subscriptions are stored in `~/.ignite/notify.yaml` as a list of objects:
 ```yaml
 - name: mysub
   node: ws://localhost:26657
-  query: tm.event='NewBlock'
+  query: tm.event EXISTS
   sink: slack
   webhook: https://hooks.slack.com/services/XXX
 ```
