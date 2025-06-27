@@ -21,7 +21,7 @@ func (notifyApp) Manifest(_ context.Context) (*plugin.Manifest, error) {
 
 		Commands: []*plugin.Command{
 			{
-				Use:   "add [flags]",
+				Use:   "add",
 				Short: "Add a new subscription",
 				Flags: []*plugin.Flag{
 					{Name: "name", Type: plugin.FlagTypeString, Usage: "subscription name", Shorthand: "n"},
@@ -42,13 +42,13 @@ func (notifyApp) Manifest(_ context.Context) (*plugin.Manifest, error) {
 
 func (notifyApp) Execute(ctx context.Context, c *plugin.ExecutedCommand, _ plugin.ClientAPI) error {
 	switch c.Path {
-	case "notify add":
-		return cmd.Add(ctx, c)   // implémentez dans cmd/add.go
-	case "notify run":
+	case "add", "ignite add":
+		return cmd.Add(ctx, c)
+	case "run", "ignite run":
 		return cmd.Run(ctx, c)
-	case "notify ls":
+	case "ls", "ignite ls":
 		return cmd.List(ctx, c)
-	case "notify rm":
+	case "rm", "ignite rm":
 		return cmd.Remove(ctx, c)
 	default:
 		return fmt.Errorf("unknown command path: %s", c.Path)

@@ -1,5 +1,6 @@
 # Ignite Notify Plugin – Telegram Sink Guide
 
+
 This guide explains how to set up and use the **Telegram sink** with the Ignite Notify Plugin to receive blockchain event notifications directly in your Telegram chats or groups.
 
 ---
@@ -42,10 +43,10 @@ https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstUvwxYZ/sendMessage?cha
 
 Run:
 ```sh
-ignite notify add \
+ignite add \
   --name mytelegram \
   --node ws://localhost:26657 \
-  --query "tm.event='NewBlock'" \
+  --query "tm.event='tm.event EXISTS'" \
   --sink telegram \
   --webhook "https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstUvwxYZ/sendMessage?chat_id=123456789"
 ```
@@ -55,7 +56,7 @@ ignite notify add \
 ## 5. Run the Notifier
 
 ```sh
-ignite notify run
+ignite run
 ```
 You will now receive notifications in your Telegram chat or group when the event matches your query.
 
@@ -72,23 +73,3 @@ Your `~/.ignite/notify.yaml` will have an entry like:
   webhook: https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstUvwxYZ/sendMessage?chat_id=123456789
 ```
 
----
-
-## 7. Troubleshooting
-
-- Double-check your token and chat ID.
-- Make sure your bot is started and not blocked.
-- Test your webhook URL in a browser for Telegram errors.
-- Check plugin logs for error messages.
-
----
-
-## 8. Advanced Usage
-
-- To use Markdown or HTML formatting, extend the sink logic in `internal/sink/sink.go` to add the `parse_mode` parameter.
-- You can add more Telegram subscriptions for different chats or queries.
-
----
-
-## License
-MIT

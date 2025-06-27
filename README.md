@@ -40,22 +40,26 @@ go build -o ignite-notify
 
 ### Add a subscription
 ```
-ignite notify add --name mysub --node ws://localhost:26657 --query "tm.event='NewBlock'" --sink slack --webhook https://hooks.slack.com/services/XXX
+ignite add --name mysub --node ws://localhost:26657 --query "tm.event='NewBlock'" --sink slack --webhook https://hooks.slack.com/services/XXX
 ```
+Example (Telegram):
+```
+ignite add --name mytelegram --node ws://localhost:26657 --query "tm.event='NewBlock'" --sink telegram --webhook "https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>"
+"""
 
 ### List subscriptions
 ```
-ignite notify ls
+ignite ls
 ```
 
 ### Remove a subscription
 ```
-ignite notify rm --name mysub
+ignite rm --name mysub
 ```
 
 ### Run all subscriptions
 ```
-ignite notify run
+ignite run
 ```
 
 ---
@@ -84,6 +88,17 @@ Subscriptions are stored in `~/.ignite/notify.yaml` as a list of objects:
 ---
 
 ## Development & Testing
+
+### Troubleshooting
+
+#### If you see `Unknown command path: ignite add`
+- Make sure you have updated the plugin dispatcher in `app.go` to handle both `add` and `ignite add` (and same for other commands).
+- Uninstall and reinstall the plugin:
+  ```sh
+  ignite app uninstall -g /home/nova/Documents/projects/Ignite/ignite-notify
+  ignite app install -g /home/nova/Documents/projects/Ignite/ignite-notify
+  ```
+- If the problem persists, check that you are running the latest code and that the app is properly registered.
 
 - All code is modular and covered by unit tests.
 - Run all tests:
