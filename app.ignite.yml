@@ -1,6 +1,11 @@
 version: 1
 apps:
   ignite-notify:
-    description: ignite-notify is an awesome Ignite application!
+    description: ignite-notify is a modular notification service designed for the Ignite blockchain ecosystem. It could monitors on-chain events, validator activities, governance proposals, and transaction statuses,
+  then delivers real-time notifications to users through multiple channels such as email, Telegram,
+  and webhooks. The application supports configurable notification rules, and
+  integrates seamlessly with Ignite-based chains via REST and gRPC APIs. It is intended to help
+  validators, delegators, and developers stay informed about critical network events, security alerts,
+  and operational updates, thereby improving engagement, transparency, and security .
     path: ./
     
