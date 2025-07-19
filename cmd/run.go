@@ -3,8 +3,8 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"ignite-notify/internal/config"
-	"ignite-notify/internal/runner"
+	"notify/internal/config"
+	"notify/internal/runner"
 
 	"github.com/ignite/cli/v29/ignite/services/plugin"
 )

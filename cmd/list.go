@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/ignite/cli/v29/ignite/services/plugin"
-	"ignite-notify/internal/config"
+	"notify/internal/config"
 )
 
 // List handles the 'notify ls' command

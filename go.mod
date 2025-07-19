@@ -1,4 +1,4 @@
-module ignite-notify
+module notify
 
 go 1.24.0
 

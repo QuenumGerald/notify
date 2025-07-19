@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"ignite-notify/cmd"
+	"notify/cmd"
 )
 
 type notifyApp struct{}

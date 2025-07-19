@@ -2,9 +2,9 @@ package runner
 
 import (
 	"context"
-	"ignite-notify/internal/config"
-	"ignite-notify/internal/sink"
-	"ignite-notify/internal/subscriber"
+	"notify/internal/config"
+	"notify/internal/sink"
+	"notify/internal/subscriber"
 )
 
 type Runner struct {

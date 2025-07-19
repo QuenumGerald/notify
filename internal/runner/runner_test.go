@@ -2,8 +2,8 @@ package runner
 
 import (
 	"context"
+	"notify/internal/config"
 	"testing"
-	"ignite-notify/internal/config"
 )
 
 func TestRunner_Start_NoSubs(t *testing.T) {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 	"github.com/gorilla/websocket"
-	"ignite-notify/internal/config"
-	"ignite-notify/internal/sink"
+	"notify/internal/config"
+	"notify/internal/sink"
 )
 
 type SubscriptionRunner struct {
