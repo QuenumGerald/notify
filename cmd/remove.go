@@ -10,12 +10,7 @@ import (
 // Remove handles the 'notify rm' command
 // Uses config.Subscription and helpers from internal/config.go
 func Remove(ctx context.Context, c *plugin.ExecutedCommand) error {
-	name := ""
-	for _, f := range c.Flags {
-		if f.Name == "name" {
-			name = f.Value
-		}
-	}
+	name := flagValue(c, "name", "n")
 	if name == "" && len(c.Args) > 0 {
 		name = c.Args[0]
 	}

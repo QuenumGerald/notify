@@ -10,21 +10,11 @@ import (
 // Add handles the 'notify add' command
 // Uses config.Subscription and helpers from internal/config.go
 func Add(ctx context.Context, c *plugin.ExecutedCommand) error {
-	name, node, query, sink, webhook := "", "", "", "", ""
-	for _, f := range c.Flags {
-		switch f.Name {
-		case "name":
-			name = f.Value
-		case "node":
-			node = f.Value
-		case "query":
-			query = f.Value
-		case "sink":
-			sink = f.Value
-		case "webhook":
-			webhook = f.Value
-		}
-	}
+	name := flagValue(c, "name", "n")
+	node := flagValue(c, "node", "N")
+	query := flagValue(c, "query")
+	sink := flagValue(c, "sink")
+	webhook := flagValue(c, "webhook")
 
 	// Set defaults
 	if node == "" {
