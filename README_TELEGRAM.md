@@ -16,13 +16,27 @@ This guide explains how to set up and use the **Telegram sink** with the Ignite 
 
 ## 2. Get Your Chat ID
 
-1. Start a chat with your bot or add it to a group.
+### For a Private Chat:
+
+1. Start a chat with your bot.
 2. Send any message to the bot.
-3. Open this URL in your browser (replace `<TOKEN>`):
-   ```
-   https://api.telegram.org/bot<TOKEN>/getUpdates
-   ```
-4. In the JSON response, find `"chat":{"id":...}` and copy the `id` (may be negative for groups).
+3. Add [@userinfobot](https://t.me/userinfobot) or [@getidsbot](https://t.me/getidsbot) to your contacts and start a chat.
+4. The bot will display your personal chat ID (a positive number like `123456789`).
+
+### For a Group:
+
+1. **IMPORTANT: Add your bot to the group first!**
+2. Make sure someone sends a message in the group, mentioning the bot (e.g., "@yourbot hello").
+3. Add [@getidsbot](https://t.me/getidsbot) to the group.
+4. The bot will display the group chat ID (usually a negative number like `-123456789`).
+
+### Alternative Method:
+
+You can also get IDs via API:
+```
+https://api.telegram.org/bot<TOKEN>/getUpdates
+```
+This shows recent interactions with your bot, including chat IDs.
 
 ---
 
@@ -36,6 +50,16 @@ Example:
 ```
 https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstUvwxYZ/sendMessage?chat_id=123456789
 ```
+
+### Verify Your Webhook
+
+Before setting up the Ignite subscription, test your webhook with:
+
+```bash
+curl -X POST "https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<CHAT_ID>&text=Test+message"
+```
+
+If you receive the message in Telegram, your webhook is correctly configured!
 
 ---
 
@@ -95,6 +119,34 @@ type: tendermint/event/RoundState
 events.tm.event.0: NewRoundStep
 query: tm.event EXISTS
 ```
+
+---
+
+## Troubleshooting
+
+### Common Errors
+
+1. **"Bad Request: chat not found"**
+   - The bot has not been added to the group or chat
+   - The chat_id is incorrect
+   - Solution: Add the bot to the group first, then verify the chat_id
+
+2. **"Forbidden: bots can't send messages to bots"**
+   - You are trying to send messages to the bot itself
+   - Solution: Use a human user's chat_id or a group chat_id, never the bot's own ID
+
+3. **Bot not visible in group contacts**
+   - Make sure you've interacted with the bot in a private chat first
+   - For groups, the bot might need privacy mode disabled:
+     1. Contact [@BotFather](https://t.me/botfather)
+     2. Send `/setprivacy`
+     3. Select your bot
+     4. Choose "Disable"
+
+4. **Messages not being received**
+   - Verify the webhook with curl command (see "Verify Your Webhook" section)
+   - Check if your blockchain node is producing events
+   - Try with `--sink stdout` first to debug
 
 ---
 
