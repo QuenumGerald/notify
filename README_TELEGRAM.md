@@ -46,7 +46,7 @@ Run:
 ignite add \
   --name mytelegram \
   --node ws://localhost:26657 \
-  --query "tm.event='tm.event EXISTS'" \
+  --query "tm.event EXISTS" \
   --sink telegram \
   --webhook "https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstUvwxYZ/sendMessage?chat_id=123456789"
 ```
