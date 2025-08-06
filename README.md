@@ -39,27 +39,27 @@ go build -o ignite-notify
 ## Usage
 
 ### Add a subscription
-```
-ignite add --name mysub --node ws://localhost:26657 --query "tm.event EXISTS" --sink slack --webhook https://hooks.slack.com/services/XXX
+```bash
+ignite-notify add --name mysub --node ws://localhost:26657 --query "tm.event EXISTS" --sink slack --webhook https://hooks.slack.com/services/XXX
 ```
 Example (Telegram):
+```bash
+ignite-notify add --name mytelegram --node ws://localhost:26657 --query "tm.event EXISTS" --sink telegram --webhook "https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>"
 ```
-ignite add --name mytelegram --node ws://localhost:26657 --query "tm.event EXISTS" --sink telegram --webhook "https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>"
-"""
 
 ### List subscriptions
 ```
-ignite ls
+ignite-notify ls
 ```
 
 ### Remove a subscription
 ```
-ignite rm --name mysub
+ignite-notify rm --name mysub
 ```
 
 ### Run all subscriptions
 ```
-ignite run
+ignite-notify run
 ```
 
 ---
@@ -100,12 +100,14 @@ Subscriptions are stored in `~/.ignite/notify.yaml` as a list of objects:
   ```
 - If the problem persists, check that you are running the latest code and that the app is properly registered.
 
-- All code is modular and covered by unit tests.
-- Run all tests:
-  ```
-  go test ./...
-  ```
-- Test files are present in each major package (`cmd/`, `internal/config/`, `internal/sink/`, `internal/runner/`).
+### Running Tests
+
+All code is modular and covered by unit tests. Test files are present in each major package (`cmd/`, `internal/config/`, `internal/sink/`, `internal/runner/`).
+
+Run all tests:
+```
+go test ./...
+```
 
 ---
 
